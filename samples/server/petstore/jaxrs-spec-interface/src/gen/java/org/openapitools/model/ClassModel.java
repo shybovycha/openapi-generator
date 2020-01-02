@@ -21,11 +21,8 @@ public class ClassModel  implements Serializable {
   
   private @Valid String propertyClass;
 
-  /**
-   **/
-  public ClassModel propertyClass(String propertyClass) {
+  public ClassModel(String propertyClass) {
     this.propertyClass = propertyClass;
-    return this;
   }
 
   
@@ -34,10 +31,10 @@ public class ClassModel  implements Serializable {
   public String getPropertyClass() {
     return propertyClass;
   }
+
   public void setPropertyClass(String propertyClass) {
     this.propertyClass = propertyClass;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -75,6 +72,25 @@ public class ClassModel  implements Serializable {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+    private String propertyClass;
+
+    /**
+      **/
+    public Builder propertyClass(String propertyClass) {
+      this.propertyClass = propertyClass;
+      return this;
+    }
+
+    public ClassModel build() {
+      return new ClassModel(propertyClass);
+    }
   }
 }
 

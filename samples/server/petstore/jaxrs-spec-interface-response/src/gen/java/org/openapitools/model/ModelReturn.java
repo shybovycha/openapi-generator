@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+
 /**
  * Model for testing reserved words
  **/
@@ -20,11 +21,8 @@ public class ModelReturn  implements Serializable {
   
   private @Valid Integer _return;
 
-  /**
-   **/
-  public ModelReturn _return(Integer _return) {
+  public ModelReturn(Integer _return) {
     this._return = _return;
-    return this;
   }
 
   
@@ -33,10 +31,10 @@ public class ModelReturn  implements Serializable {
   public Integer getReturn() {
     return _return;
   }
+
   public void setReturn(Integer _return) {
     this._return = _return;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -47,7 +45,7 @@ public class ModelReturn  implements Serializable {
       return false;
     }
     ModelReturn _return = (ModelReturn) o;
-    return Objects.equals(_return, _return._return);
+    return Objects.equals(this._return, _return._return);
   }
 
   @Override
@@ -74,6 +72,25 @@ public class ModelReturn  implements Serializable {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+    private Integer _return;
+
+    /**
+      **/
+    public Builder _return(Integer _return) {
+      this._return = _return;
+      return this;
+    }
+
+    public ModelReturn build() {
+      return new ModelReturn(_return);
+    }
   }
 }
 

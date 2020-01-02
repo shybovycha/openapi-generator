@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+
 /**
  * Model for testing model name starting with number
  **/
@@ -21,11 +22,9 @@ public class Model200Response  implements Serializable {
   private @Valid Integer name;
   private @Valid String propertyClass;
 
-  /**
-   **/
-  public Model200Response name(Integer name) {
+  public Model200Response(Integer name, String propertyClass) {
     this.name = name;
-    return this;
+    this.propertyClass = propertyClass;
   }
 
   
@@ -34,27 +33,20 @@ public class Model200Response  implements Serializable {
   public Integer getName() {
     return name;
   }
+
   public void setName(Integer name) {
     this.name = name;
   }
-
-  /**
-   **/
-  public Model200Response propertyClass(String propertyClass) {
-    this.propertyClass = propertyClass;
-    return this;
-  }
-
   
   @ApiModelProperty(value = "")
   @JsonProperty("class")
   public String getPropertyClass() {
     return propertyClass;
   }
+
   public void setPropertyClass(String propertyClass) {
     this.propertyClass = propertyClass;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -65,8 +57,8 @@ public class Model200Response  implements Serializable {
       return false;
     }
     Model200Response _200response = (Model200Response) o;
-    return Objects.equals(name, _200response.name) &&
-        Objects.equals(propertyClass, _200response.propertyClass);
+    return Objects.equals(this.name, _200response.name) &&
+        Objects.equals(this.propertyClass, _200response.propertyClass);
   }
 
   @Override
@@ -94,6 +86,32 @@ public class Model200Response  implements Serializable {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+    private Integer name;
+    private String propertyClass;
+
+    /**
+      **/
+    public Builder name(Integer name) {
+      this.name = name;
+      return this;
+    }
+    /**
+      **/
+    public Builder propertyClass(String propertyClass) {
+      this.propertyClass = propertyClass;
+      return this;
+    }
+
+    public Model200Response build() {
+      return new Model200Response(name, propertyClass);
+    }
   }
 }
 
